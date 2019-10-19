@@ -30,9 +30,7 @@ function exportVideo(e) {
   link.href = URL.createObjectURL(blob);
   link.click();
   URL.revokeObjectURL(link.href);
-}
-
-
+} 
 
 //
 
@@ -74,6 +72,12 @@ function setup() {
   // Create a new Style Transfer method with a defined style.
   // We give the video as the second argument
   style = ml5.styleTransfer(model, video, modelLoaded);
+  setInterval(() => {
+    const newModel = selectModel()
+    select('h2').html(newModel.split('/')[1])
+    style = ml5.styleTransfer(newModel, video, modelLoaded);
+  }, 60000)
+  
 }
 
 function draw() {
