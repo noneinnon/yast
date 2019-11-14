@@ -1,5 +1,3 @@
-
-// const redButton = document.querySelector('#redButton');
 const chunks = [];
 
 function record() {
@@ -12,11 +10,7 @@ function record() {
     }
   };
   recorder.onstop = exportVideo;
-  // btn.onclick = (e) => {
-  //   recorder.stop();
-  //   btn.textContent = 'start recording';
-  //   btn.onclick = record;
-  // };
+
   recorder.start();
   setTimeout(() => {
     recorder.stop();
@@ -60,15 +54,10 @@ function setup() {
   // input audio
   input = new p5.AudioIn();
   input.start()
-  // audioCtx = getAudioContext()
+  
   const model = selectModel()
-  // The button to start and stop the transfer process
-  // select('#blueButton').mousePressed(startStop);
-  // select('#greenButton').mousePressed(changeFilter)
-  // select('#audioButton').mousePressed(toggleAudio)
-  // const img = `images/${model.split('/')[1]}.jpg`
-  // document.querySelector('#modelImage').setAttribute('src', img)
   select('h2').html(model.split('/')[1])
+
   // Create a new Style Transfer method with a defined style.
   // We give the video as the second argument
   style = ml5.styleTransfer(model, video, modelLoaded);
@@ -122,7 +111,6 @@ function selectModel(){
 }
 // Start and stop the transfer process
 function startStop() {
-  // style = ml5.styleTransfer(selectModel(), video, modelLoaded);
   style.transfer(gotResult);
   isTransferring = !isTransferring;
 }
@@ -148,7 +136,7 @@ function toggleAudioReaction() {
 // filter function
 function changeFilter() {
   if (filters.length < 1) {
-    // console.log(123132312)
+    
     filters = [GRAY, THRESHOLD, INVERT]
     return
   } else {
@@ -167,4 +155,3 @@ function gotResult(err, img) {
 document.querySelector('#redButton').onclick = record;
 document.querySelector('#greenButton').onclick = changeFilter;
 document.querySelector('#blueButton').onclick = startStop
-// redButton.onclick = record;
