@@ -1,5 +1,6 @@
 # YAST - Yet another style transfer
 A simple audio-reactive style-transfer app.
+Currently only works in Chrome.
 
 ### features
 - 5 models
